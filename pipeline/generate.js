@@ -99,7 +99,7 @@ async function pickGroqModel() {
   return scored[0].id;
 }
 
-async function generateArticle(keyword, model) {
+async function generateArticle(keyword, model, attempt = 1) {
   const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -116,6 +116,15 @@ async function generateArticle(keyword, model) {
       temperature: 0.7,
     }),
   });
+
+  if (response.status === 429 && attempt <= 4) {
+    const err = await response.text();
+    const waitMatch = err.match(/try again in ([\d.]+)s/i);
+    const waitMs = waitMatch ? Math.ceil(parseFloat(waitMatch[1]) * 1000) : attempt * 5000;
+    console.log(`  ⏳  Rate limited, waiting ${Math.ceil(waitMs / 1000)}s (attempt ${attempt})`);
+    await new Promise(r => setTimeout(r, waitMs + 500));
+    return generateArticle(keyword, model, attempt + 1);
+  }
 
   if (!response.ok) {
     const err = await response.text();
