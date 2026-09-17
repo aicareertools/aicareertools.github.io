@@ -34,7 +34,7 @@ if (type === 'guides') {
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {items.map(item => (
         <a
-          href={type === 'tools' ? `/tools/${item.slug}` : `/guides/${item.slug}`}
+          href={type === 'tools' ? `${import.meta.env.BASE_URL}tools/${item.slug}` : `${import.meta.env.BASE_URL}guides/${item.slug}`}
           class="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group"
         >
           <div class="font-medium text-slate-800 group-hover:text-blue-600 transition-colors text-sm leading-snug">
