@@ -1,0 +1,14 @@
+{
+  "name": "Salary Estimator",
+  "slug": "salary-estimator",
+  "description": "Get a realistic salary range estimate for any job title, location, and experience level — plus negotiation tips and factors that affect your market value.",
+  "shortDesc": "Know your worth before you negotiate",
+  "icon": "💰",
+  "tags": ["salary", "negotiation", "career"],
+  "inputs": [
+    { "id": "jobTitle", "label": "Job Title", "type": "text", "placeholder": "e.g. Software Engineer", "required": true },
+    { "id": "location", "label": "Location", "type": "text", "placeholder": "e.g. Austin, TX or Remote", "required": true },
+    { "id": "yearsExperience", "label": "Years of Experience", "type": "select", "options": ["0-1 years", "2-4 years", "5-9 years", "10+ years"], "required": true },
+    { "id": "industry", "label": "Industry (optional)", "type": "text", "placeholder": "e.g. Tech, Finance, Healthcare", "required": false }
+  ]
+}

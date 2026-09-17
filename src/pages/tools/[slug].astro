@@ -1,0 +1,200 @@
+---
+import Base from '../../layouts/Base.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map(tool => ({ params: { slug: tool.data.slug } }));
+}
+
+const { slug } = Astro.params;
+const tools = await getCollection('tools');
+const toolEntry = tools.find(t => t.data.slug === slug);
+if (!toolEntry) return Astro.redirect('/tools');
+const tool = toolEntry.data;
+
+// Related guides: articles that share tags with this tool
+const allGuides = await getCollection('guides');
+const relatedGuides = allGuides
+  .filter(g => g.data.tags.some(t => tool.tags.includes(t)))
+  .slice(0, 3);
+
+// The Cloudflare Worker URL — set this after deploying your worker
+// Format: https://career-tools-api.YOURSUBDOMAIN.workers.dev
+const WORKER_URL = import.meta.env.PUBLIC_WORKER_URL || 'https://career-tools-api.example.workers.dev';
+---
+
+<Base title={tool.name} description={tool.description}>
+  <div class="max-w-3xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <div class="mb-8">
+      <div class="text-4xl mb-3">{tool.icon}</div>
+      <h1 class="text-3xl font-bold text-slate-900 mb-2">{tool.name}</h1>
+      <p class="text-slate-500 text-lg">{tool.description}</p>
+    </div>
+
+    <!-- Tool form -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <form id="tool-form" class="space-y-5">
+        {tool.inputs.map(input => (
+          <div>
+            <label for={input.id} class="block text-sm font-medium text-slate-700 mb-1.5">
+              {input.label}
+              {!input.required && <span class="text-slate-400 font-normal ml-1">(optional)</span>}
+            </label>
+
+            {input.type === 'textarea' && (
+              <textarea
+                id={input.id}
+                name={input.id}
+                required={input.required}
+                placeholder={input.placeholder}
+                rows={5}
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y"
+              />
+            )}
+
+            {input.type === 'text' && (
+              <input
+                type="text"
+                id={input.id}
+                name={input.id}
+                required={input.required}
+                placeholder={input.placeholder}
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            )}
+
+            {input.type === 'select' && input.options && (
+              <select
+                id={input.id}
+                name={input.id}
+                required={input.required}
+                class="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+              >
+                <option value="">Select...</option>
+                {input.options.map(opt => <option value={opt}>{opt}</option>)}
+              </select>
+            )}
+          </div>
+        ))}
+
+        <button
+          type="submit"
+          id="submit-btn"
+          class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+        >
+          Generate →
+        </button>
+      </form>
+
+      <!-- Result area -->
+      <div id="result-area" class="hidden mt-6 pt-6 border-t border-slate-200">
+        <div class="flex items-center justify-between mb-3">
+          <div class="font-semibold text-slate-900">Result</div>
+          <button id="copy-btn" class="text-sm text-blue-600 hover:text-blue-800 font-medium">Copy</button>
+        </div>
+        <div
+          id="result-text"
+          class="bg-slate-50 rounded-lg p-4 text-sm text-slate-800 leading-relaxed whitespace-pre-wrap min-h-24 font-mono"
+        ></div>
+        <div id="loading-indicator" class="hidden items-center gap-2 text-sm text-slate-500 mt-3">
+          <svg class="animate-spin h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+          </svg>
+          Generating...
+        </div>
+        <div id="error-msg" class="hidden mt-3 text-sm text-red-600 bg-red-50 rounded-lg p-3"></div>
+      </div>
+    </div>
+
+    <!-- Ad slot below tool -->
+    <!-- <ins class="adsbygoogle mt-8 block" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+
+    <!-- Related guides -->
+    {relatedGuides.length > 0 && (
+      <div class="mt-10 pt-8 border-t border-slate-200">
+        <div class="font-semibold text-slate-900 mb-4">Related Guides</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {relatedGuides.map(guide => (
+            <a href={`/guides/${guide.slug}`} class="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group">
+              <div class="font-medium text-slate-800 group-hover:text-blue-600 transition-colors text-sm leading-snug">{guide.data.title}</div>
+              <div class="text-xs text-slate-500 mt-1 line-clamp-2">{guide.data.description}</div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</Base>
+
+<script define:vars={{ slug, WORKER_URL }}>
+const form = document.getElementById('tool-form');
+const resultArea = document.getElementById('result-area');
+const resultText = document.getElementById('result-text');
+const loadingIndicator = document.getElementById('loading-indicator');
+const errorMsg = document.getElementById('error-msg');
+const submitBtn = document.getElementById('submit-btn');
+const copyBtn = document.getElementById('copy-btn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const inputs = {};
+  formData.forEach((val, key) => { inputs[key] = val; });
+
+  // Show result area and loading
+  resultArea.classList.remove('hidden');
+  resultText.textContent = '';
+  errorMsg.classList.add('hidden');
+  loadingIndicator.classList.remove('hidden');
+  loadingIndicator.classList.add('flex');
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch(`${WORKER_URL}?tool=${slug}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(inputs),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(err || `Server error ${res.status}`);
+    }
+
+    loadingIndicator.classList.add('hidden');
+    loadingIndicator.classList.remove('flex');
+
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let done = false;
+
+    while (!done) {
+      const { value, done: doneReading } = await reader.read();
+      done = doneReading;
+      if (value) {
+        resultText.textContent += decoder.decode(value, { stream: true });
+      }
+    }
+  } catch (err) {
+    loadingIndicator.classList.add('hidden');
+    loadingIndicator.classList.remove('flex');
+    errorMsg.textContent = err.message || 'Something went wrong. Please try again.';
+    errorMsg.classList.remove('hidden');
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+
+copyBtn.addEventListener('click', () => {
+  if (!resultText.textContent) return;
+  navigator.clipboard.writeText(resultText.textContent).then(() => {
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy'; }, 2000);
+  });
+});
+</script>

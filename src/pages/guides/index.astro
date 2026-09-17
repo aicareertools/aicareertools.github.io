@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const guides = await getCollection('guides');
+const sorted = guides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Group by primary tag
+const tagged: Record<string, typeof sorted> = {};
+for (const guide of sorted) {
+  const tag = guide.data.tags[0] || 'general';
+  if (!tagged[tag]) tagged[tag] = [];
+  tagged[tag].push(guide);
+}
+---
+
+<Base title="Career Guides" description="Expert career guides covering cover letters, resumes, interviews, salary negotiation, and job search strategies.">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-slate-900 mb-3">Career Guides</h1>
+      <p class="text-slate-500 max-w-2xl">Expert advice for every stage of your job search — written by AI, reviewed for accuracy.</p>
+    </div>
+
+    {sorted.length === 0 && (
+      <p class="text-slate-400">Guides are being generated. Check back soon.</p>
+    )}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {sorted.map(guide => (
+        <ArticleCard
+          title={guide.data.title}
+          description={guide.data.description}
+          slug={guide.id.replace(/\.(md|mdx)$/, '')}
+          pubDate={guide.data.pubDate}
+          tags={guide.data.tags}
+        />
+      ))}
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import AffiliateCTA from '../../components/AffiliateCTA.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map(guide => ({
+    params: { slug: guide.id.replace(/\.(md|mdx)$/, '') },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+
+const formattedDate = guide.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric', month: 'long', day: 'numeric'
+});
+
+// Extract job title from tags for affiliate CTA
+const jobTag = guide.data.tags.find(t => !['resume', 'cover-letter', 'interview', 'salary', 'job-search', 'career'].includes(t));
+---
+
+<Base title={guide.data.title} description={guide.data.description}>
+  <article class="max-w-3xl mx-auto px-4 py-12">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-slate-400 mb-6 flex items-center gap-1.5">
+      <a href="/" class="hover:text-slate-600">Home</a>
+      <span>/</span>
+      <a href="/guides" class="hover:text-slate-600">Guides</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-8">
+      {guide.data.tags.length > 0 && (
+        <div class="flex gap-2 flex-wrap mb-3">
+          {guide.data.tags.slice(0, 3).map(tag => (
+            <span class="text-xs bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full capitalize">
+              {tag.replace(/-/g, ' ')}
+            </span>
+          ))}
+        </div>
+      )}
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mb-3">{guide.data.title}</h1>
+      <p class="text-lg text-slate-500">{guide.data.description}</p>
+      <div class="mt-4 text-sm text-slate-400">{formattedDate}</div>
+    </header>
+
+    <!-- Ad slot: before article -->
+    <!-- <ins class="adsbygoogle block mb-8" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+
+    <!-- Article body -->
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+
+    <!-- Affiliate CTA -->
+    <AffiliateCTA jobTitle={jobTag} />
+
+    <!-- Ad slot: after article -->
+    <!-- <ins class="adsbygoogle block mt-6" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+
+    <!-- Related tools -->
+    <RelatedContent tags={guide.data.tags} currentSlug={guide.id} type="tools" />
+
+    <!-- Related guides -->
+    <RelatedContent tags={guide.data.tags} currentSlug={guide.id} type="guides" />
+  </article>
+</Base>

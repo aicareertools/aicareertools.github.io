@@ -1,0 +1,32 @@
+---
+interface Props {
+  jobTitle?: string;
+}
+const { jobTitle } = Astro.props;
+const searchQuery = jobTitle ? encodeURIComponent(jobTitle) : '';
+---
+
+<div class="my-8 p-6 bg-blue-50 border border-blue-100 rounded-xl">
+  <div class="font-semibold text-slate-900 mb-1">Ready to apply?</div>
+  <p class="text-sm text-slate-600 mb-4">
+    Browse thousands of open positions{jobTitle ? ` for ${jobTitle}` : ''} on the top job boards.
+  </p>
+  <div class="flex flex-wrap gap-3">
+    <a
+      href={`https://www.indeed.com/jobs?q=${searchQuery}`}
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+      class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+    >
+      Search on Indeed →
+    </a>
+    <a
+      href={`https://www.ziprecruiter.com/jobs-search?search=${searchQuery}`}
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+      class="inline-flex items-center gap-1.5 bg-white border border-slate-300 text-slate-700 text-sm font-medium px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors"
+    >
+      Search on ZipRecruiter
+    </a>
+  </div>
+</div>

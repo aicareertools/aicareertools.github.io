@@ -1,0 +1,13 @@
+{
+  "name": "Interview Questions Generator",
+  "slug": "interview-questions-generator",
+  "description": "Get a customized list of likely interview questions for any role, plus suggested answers and talking points to help you walk in confident.",
+  "shortDesc": "Prep for any interview with tailored questions & answers",
+  "icon": "🎯",
+  "tags": ["interview", "interview-prep", "career"],
+  "inputs": [
+    { "id": "jobTitle", "label": "Job Title", "type": "text", "placeholder": "e.g. Data Analyst", "required": true },
+    { "id": "experienceLevel", "label": "Experience Level", "type": "select", "options": ["Entry Level", "Mid Level", "Senior", "Lead / Manager"], "required": true },
+    { "id": "focusArea", "label": "Focus Area (optional)", "type": "text", "placeholder": "e.g. SQL, leadership, system design", "required": false }
+  ]
+}

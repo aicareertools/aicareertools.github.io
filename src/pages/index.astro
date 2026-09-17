@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import ToolCard from '../components/ToolCard.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const tools = await getCollection('tools');
+const guides = await getCollection('guides');
+const recentGuides = guides
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+---
+
+<Base title="Free AI Career Tools — Cover Letters, Resumes & More">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-5 leading-tight">
+        Land your next job with<br class="hidden sm:block" /> free AI-powered tools
+      </h1>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+        Generate cover letters, analyze resumes, prep for interviews, and decode job descriptions — all free, no sign-up required.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/tools/cover-letter-generator" class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors">
+          Generate Cover Letter
+        </a>
+        <a href="/tools" class="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
+          See All Tools
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="bg-white border-b border-slate-100 py-4">
+    <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-8 text-sm text-slate-500">
+      <span>✓ No sign-up required</span>
+      <span>✓ 100% free</span>
+      <span>✓ AI-powered results in seconds</span>
+      <span>✓ Used by thousands of job seekers</span>
+    </div>
+  </section>
+
+  <!-- Tools grid -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold text-slate-900 mb-2">Free Career Tools</h2>
+    <p class="text-slate-500 mb-8">AI tools designed to give you an edge at every stage of your job search.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map(tool => (
+        <ToolCard
+          name={tool.data.name}
+          slug={tool.data.slug}
+          shortDesc={tool.data.shortDesc}
+          icon={tool.data.icon}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Ad placement -->
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- AdSense unit: replace after approval -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXX" data-ad-slot="XXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+  </div>
+
+  <!-- Recent guides -->
+  {recentGuides.length > 0 && (
+    <section class="max-w-6xl mx-auto px-4 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">Career Guides</h2>
+          <p class="text-slate-500 mt-1">Expert advice for every stage of your job search.</p>
+        </div>
+        <a href="/guides" class="text-sm font-medium text-blue-600 hover:text-blue-700">View all →</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {recentGuides.map(guide => (
+          <ArticleCard
+            title={guide.data.title}
+            description={guide.data.description}
+            slug={guide.id.replace(/\.(md|mdx)$/, '')}
+            pubDate={guide.data.pubDate}
+            tags={guide.data.tags}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- CTA band -->
+  <section class="bg-blue-600 text-white py-14 px-4 mt-8">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-3">Start your job search today</h2>
+      <p class="text-blue-100 mb-6">Free tools, no account needed. Write a better cover letter in under 2 minutes.</p>
+      <a href="/tools/cover-letter-generator" class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors inline-block">
+        Try Cover Letter Generator →
+      </a>
+    </div>
+  </section>
+</Base>

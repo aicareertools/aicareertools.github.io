@@ -1,0 +1,14 @@
+{
+  "name": "Cover Letter Generator",
+  "slug": "cover-letter-generator",
+  "description": "Generate a tailored, professional cover letter in seconds. Paste your experience, enter the job details, and get a compelling cover letter ready to send.",
+  "shortDesc": "AI-powered cover letters tailored to any job",
+  "icon": "✉️",
+  "tags": ["cover-letter", "job-application", "writing"],
+  "inputs": [
+    { "id": "jobTitle", "label": "Job Title", "type": "text", "placeholder": "e.g. Senior Product Manager", "required": true },
+    { "id": "company", "label": "Company Name", "type": "text", "placeholder": "e.g. Acme Corp", "required": true },
+    { "id": "experience", "label": "Your Experience (bullet points)", "type": "textarea", "placeholder": "- 5 years in product management\n- Led team of 8 engineers\n- Launched 3 products to market", "required": true },
+    { "id": "tone", "label": "Tone", "type": "select", "options": ["Professional", "Enthusiastic", "Concise"], "required": true }
+  ]
+}

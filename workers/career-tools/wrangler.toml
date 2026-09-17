@@ -1,0 +1,15 @@
+name = "career-tools-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# KV namespace for rate limiting
+# Create with: npx wrangler kv:namespace create RATE_LIMIT_KV
+# Then paste the returned id below
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+
+# Environment variables
+# Set GROQ_API_KEY with: npx wrangler secret put GROQ_API_KEY
+# Set ALLOWED_ORIGIN with: npx wrangler secret put ALLOWED_ORIGIN
+# ALLOWED_ORIGIN should be your GitHub Pages URL e.g. https://yourusername.github.io

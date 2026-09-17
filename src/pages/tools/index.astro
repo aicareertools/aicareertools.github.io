@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { getCollection } from 'astro:content';
+
+const tools = await getCollection('tools');
+---
+
+<Base title="Free AI Career Tools" description="Browse all free AI-powered career tools: cover letter generator, resume analyzer, interview prep, salary estimator, and more.">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-bold text-slate-900 mb-3">Free AI Career Tools</h1>
+      <p class="text-slate-500 max-w-2xl">
+        Every tool is free to use, no account required. Built with AI to give you an edge at every step of your job search.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {tools.map(tool => (
+        <ToolCard
+          name={tool.data.name}
+          slug={tool.data.slug}
+          shortDesc={tool.data.shortDesc}
+          icon={tool.data.icon}
+        />
+      ))}
+    </div>
+  </div>
+</Base>

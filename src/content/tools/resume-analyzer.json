@@ -1,0 +1,12 @@
+{
+  "name": "Resume Analyzer",
+  "slug": "resume-analyzer",
+  "description": "Paste your resume and a job description to get an instant analysis: keyword gaps, strengths, weaknesses, and actionable suggestions to improve your match rate.",
+  "shortDesc": "Identify keyword gaps and improve your resume match",
+  "icon": "📄",
+  "tags": ["resume", "job-application", "analysis"],
+  "inputs": [
+    { "id": "resume", "label": "Your Resume (paste text)", "type": "textarea", "placeholder": "Paste your full resume here...", "required": true },
+    { "id": "jobDescription", "label": "Job Description", "type": "textarea", "placeholder": "Paste the job description here...", "required": true }
+  ]
+}

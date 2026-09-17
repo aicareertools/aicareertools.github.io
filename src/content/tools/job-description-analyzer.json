@@ -1,0 +1,11 @@
+{
+  "name": "Job Description Analyzer",
+  "slug": "job-description-analyzer",
+  "description": "Paste any job description to extract key skills, hidden requirements, salary signals, red flags, and what really matters to this employer.",
+  "shortDesc": "Decode any job posting: skills, red flags, salary hints",
+  "icon": "🔍",
+  "tags": ["job-search", "analysis", "career"],
+  "inputs": [
+    { "id": "jobDescription", "label": "Job Description", "type": "textarea", "placeholder": "Paste the full job description here...", "required": true }
+  ]
+}

@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = 'Free AI-powered career tools and expert guides to help you land your next job.', ogImage } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteName = 'CareerAI Tools';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title} | {siteName}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | ${siteName}`} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ${siteName}`} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- AdSense: replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID after approval -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+
+  <body class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+      <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 font-bold text-xl text-blue-600 hover:text-blue-700">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="shrink-0">
+            <rect width="28" height="28" rx="8" fill="#2563eb"/>
+            <path d="M7 14h14M14 7v14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          CareerAI
+        </a>
+        <div class="flex items-center gap-6 text-sm font-medium text-slate-600">
+          <a href="/tools" class="hover:text-blue-600 transition-colors">Tools</a>
+          <a href="/guides" class="hover:text-blue-600 transition-colors">Guides</a>
+          <a href="/tools/cover-letter-generator" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            Try for Free
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="font-bold text-white text-lg mb-2">CareerAI Tools</div>
+          <p class="text-sm leading-relaxed">Free AI-powered tools and expert guides to help you write better resumes, cover letters, and nail your next interview.</p>
+        </div>
+        <div>
+          <div class="font-semibold text-white mb-3">Tools</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/tools/cover-letter-generator" class="hover:text-white transition-colors">Cover Letter Generator</a></li>
+            <li><a href="/tools/resume-analyzer" class="hover:text-white transition-colors">Resume Analyzer</a></li>
+            <li><a href="/tools/interview-questions-generator" class="hover:text-white transition-colors">Interview Questions</a></li>
+            <li><a href="/tools/job-description-analyzer" class="hover:text-white transition-colors">Job Description Analyzer</a></li>
+            <li><a href="/tools/salary-estimator" class="hover:text-white transition-colors">Salary Estimator</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold text-white mb-3">Resources</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/guides" class="hover:text-white transition-colors">Career Guides</a></li>
+            <li><a href="/tools" class="hover:text-white transition-colors">All Tools</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 text-center py-4 text-xs text-slate-500">
+        © {new Date().getFullYear()} CareerAI Tools. For informational purposes only.
+      </div>
+    </footer>
+  </body>
+</html>

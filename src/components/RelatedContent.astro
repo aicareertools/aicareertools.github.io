@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  tags: string[];
+  currentSlug: string;
+  type: 'guides' | 'tools';
+}
+
+const { tags, currentSlug, type } = Astro.props;
+
+let items: { title: string; slug: string; shortDesc?: string; description?: string }[] = [];
+
+if (type === 'guides') {
+  const allGuides = await getCollection('guides');
+  items = allGuides
+    .filter(g => g.id !== currentSlug && g.data.tags.some(t => tags.includes(t)))
+    .slice(0, 3)
+    .map(g => ({ title: g.data.title, slug: g.id.replace(/\.(md|mdx)$/, ''), description: g.data.description }));
+} else {
+  const allTools = await getCollection('tools');
+  items = allTools
+    .filter(t => t.data.slug !== currentSlug && t.data.tags.some(t2 => tags.includes(t2)))
+    .slice(0, 3)
+    .map(t => ({ title: t.data.name, slug: t.data.slug, shortDesc: t.data.shortDesc }));
+}
+---
+
+{items.length > 0 && (
+  <div class="mt-10 pt-8 border-t border-slate-200">
+    <div class="font-semibold text-slate-900 mb-4">
+      {type === 'tools' ? 'Related Tools' : 'Related Guides'}
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      {items.map(item => (
+        <a
+          href={type === 'tools' ? `/tools/${item.slug}` : `/guides/${item.slug}`}
+          class="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group"
+        >
+          <div class="font-medium text-slate-800 group-hover:text-blue-600 transition-colors text-sm leading-snug">
+            {item.title}
+          </div>
+          {(item.shortDesc || item.description) && (
+            <div class="text-xs text-slate-500 mt-1 line-clamp-2">{item.shortDesc || item.description}</div>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+)}
