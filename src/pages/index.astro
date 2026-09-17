@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import ToolCard from '../components/ToolCard.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import { base } from '../utils/url';
 
 const tools = await getCollection('tools');
 const guides = await getCollection('guides');
@@ -22,10 +23,10 @@ const recentGuides = guides
         Generate cover letters, analyze resumes, prep for interviews, and decode job descriptions — all free, no sign-up required.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href={`${import.meta.env.BASE_URL}tools/cover-letter-generator`} class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors">
+        <a href={`${base}/tools/cover-letter-generator`} class="bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors">
           Generate Cover Letter
         </a>
-        <a href={`${import.meta.env.BASE_URL}tools`} class="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
+        <a href={`${base}/tools`} class="border border-white/40 text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/10 transition-colors">
           See All Tools
         </a>
       </div>
@@ -72,7 +73,7 @@ const recentGuides = guides
           <h2 class="text-2xl font-bold text-slate-900">Career Guides</h2>
           <p class="text-slate-500 mt-1">Expert advice for every stage of your job search.</p>
         </div>
-        <a href={`${import.meta.env.BASE_URL}guides`} class="text-sm font-medium text-blue-600 hover:text-blue-700">View all →</a>
+        <a href={`${base}/guides`} class="text-sm font-medium text-blue-600 hover:text-blue-700">View all →</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {recentGuides.map(guide => (
@@ -93,7 +94,7 @@ const recentGuides = guides
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-2xl font-bold mb-3">Start your job search today</h2>
       <p class="text-blue-100 mb-6">Free tools, no account needed. Write a better cover letter in under 2 minutes.</p>
-      <a href={`${import.meta.env.BASE_URL}tools/cover-letter-generator`} class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors inline-block">
+      <a href={`${base}/tools/cover-letter-generator`} class="bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors inline-block">
         Try Cover Letter Generator →
       </a>
     </div>

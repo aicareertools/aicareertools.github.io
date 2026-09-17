@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import RelatedContent from '../../components/RelatedContent.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { base } from '../../utils/url';
 
 export async function getStaticPaths() {
   const tools = await getCollection('tools');
@@ -119,7 +120,7 @@ const WORKER_URL = import.meta.env.PUBLIC_WORKER_URL || 'https://career-tools-ap
         <div class="font-semibold text-slate-900 mb-4">Related Guides</div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {relatedGuides.map(guide => (
-            <a href={`${import.meta.env.BASE_URL}guides/${guide.id.replace(/\.(md|mdx)$/, '')}`} class="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group">
+            <a href={`${base}/guides/${guide.id.replace(/\.(md|mdx)$/, '')}`} class="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group">
               <div class="font-medium text-slate-800 group-hover:text-blue-600 transition-colors text-sm leading-snug">{guide.data.title}</div>
               <div class="text-xs text-slate-500 mt-1 line-clamp-2">{guide.data.description}</div>
             </a>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { base } from '../utils/url';
 
 interface Props {
   title: string;
@@ -17,7 +18,7 @@ const siteName = 'CareerAI Tools';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link rel="canonical" href={canonicalURL} />
 
     <title>{title} | {siteName}</title>
@@ -45,7 +46,7 @@ const siteName = 'CareerAI Tools';
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
       <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href={import.meta.env.BASE_URL} class="flex items-center gap-2 font-bold text-xl text-blue-600 hover:text-blue-700">
+        <a href={base} class="flex items-center gap-2 font-bold text-xl text-blue-600 hover:text-blue-700">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" class="shrink-0">
             <rect width="28" height="28" rx="8" fill="#2563eb"/>
             <path d="M7 14h14M14 7v14" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -53,9 +54,9 @@ const siteName = 'CareerAI Tools';
           CareerAI
         </a>
         <div class="flex items-center gap-6 text-sm font-medium text-slate-600">
-          <a href={`${import.meta.env.BASE_URL}tools`} class="hover:text-blue-600 transition-colors">Tools</a>
-          <a href={`${import.meta.env.BASE_URL}guides`} class="hover:text-blue-600 transition-colors">Guides</a>
-          <a href={`${import.meta.env.BASE_URL}tools/cover-letter-generator`} class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+          <a href={`${base}/tools`} class="hover:text-blue-600 transition-colors">Tools</a>
+          <a href={`${base}/guides`} class="hover:text-blue-600 transition-colors">Guides</a>
+          <a href={`${base}/tools/cover-letter-generator`} class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             Try for Free
           </a>
         </div>
@@ -77,18 +78,18 @@ const siteName = 'CareerAI Tools';
         <div>
           <div class="font-semibold text-white mb-3">Tools</div>
           <ul class="space-y-2 text-sm">
-            <li><a href={`${import.meta.env.BASE_URL}tools/cover-letter-generator`} class="hover:text-white transition-colors">Cover Letter Generator</a></li>
-            <li><a href={`${import.meta.env.BASE_URL}tools/resume-analyzer`} class="hover:text-white transition-colors">Resume Analyzer</a></li>
-            <li><a href={`${import.meta.env.BASE_URL}tools/interview-questions-generator`} class="hover:text-white transition-colors">Interview Questions</a></li>
-            <li><a href={`${import.meta.env.BASE_URL}tools/job-description-analyzer`} class="hover:text-white transition-colors">Job Description Analyzer</a></li>
-            <li><a href={`${import.meta.env.BASE_URL}tools/salary-estimator`} class="hover:text-white transition-colors">Salary Estimator</a></li>
+            <li><a href={`${base}/tools/cover-letter-generator`} class="hover:text-white transition-colors">Cover Letter Generator</a></li>
+            <li><a href={`${base}/tools/resume-analyzer`} class="hover:text-white transition-colors">Resume Analyzer</a></li>
+            <li><a href={`${base}/tools/interview-questions-generator`} class="hover:text-white transition-colors">Interview Questions</a></li>
+            <li><a href={`${base}/tools/job-description-analyzer`} class="hover:text-white transition-colors">Job Description Analyzer</a></li>
+            <li><a href={`${base}/tools/salary-estimator`} class="hover:text-white transition-colors">Salary Estimator</a></li>
           </ul>
         </div>
         <div>
           <div class="font-semibold text-white mb-3">Resources</div>
           <ul class="space-y-2 text-sm">
-            <li><a href={`${import.meta.env.BASE_URL}guides`} class="hover:text-white transition-colors">Career Guides</a></li>
-            <li><a href={`${import.meta.env.BASE_URL}tools`} class="hover:text-white transition-colors">All Tools</a></li>
+            <li><a href={`${base}/guides`} class="hover:text-white transition-colors">Career Guides</a></li>
+            <li><a href={`${base}/tools`} class="hover:text-white transition-colors">All Tools</a></li>
           </ul>
         </div>
       </div>
