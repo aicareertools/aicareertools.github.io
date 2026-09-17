@@ -5,6 +5,45 @@ import { SYSTEM_PROMPT, TOOL_PROMPTS } from './prompts.js';
 const RATE_LIMIT = 5;
 const RATE_WINDOW_SECONDS = 3600;
 
+// Groq periodically retires model IDs; discover a live one and cache it
+// per-isolate instead of hardcoding a name that can go stale.
+let cachedModel = null;
+let cachedModelTime = 0;
+const MODEL_CACHE_MS = 6 * 60 * 60 * 1000;
+
+async function pickGroqModel(apiKey) {
+  const res = await fetch('https://api.groq.com/openai/v1/models', {
+    headers: { 'Authorization': `Bearer ${apiKey}` },
+  });
+  if (!res.ok) throw new Error(`Groq models list error: ${res.status}`);
+  const { data } = await res.json();
+  const exclude = /whisper|tts|guard|moderation|embed|vision|compound/i;
+  const scored = data
+    .filter(m => !exclude.test(m.id))
+    .map(m => {
+      let score = 0;
+      if (/70b/i.test(m.id)) score += 30;
+      else if (/32b|maverick/i.test(m.id)) score += 25;
+      else if (/17b|20b/i.test(m.id)) score += 20;
+      else if (/9b|8b/i.test(m.id)) score += 10;
+      if (/versatile|instruct/i.test(m.id)) score += 5;
+      return { id: m.id, score };
+    })
+    .sort((a, b) => b.score - a.score);
+  if (scored.length === 0) throw new Error('No usable Groq chat models found');
+  return scored[0].id;
+}
+
+async function getGroqModel(apiKey, forceRefresh = false) {
+  const now = Date.now();
+  if (!forceRefresh && cachedModel && now - cachedModelTime < MODEL_CACHE_MS) {
+    return cachedModel;
+  }
+  cachedModel = await pickGroqModel(apiKey);
+  cachedModelTime = now;
+  return cachedModel;
+}
+
 async function checkRateLimit(env, ip) {
   if (!env.RATE_LIMIT_KV) return true; // KV not bound yet, allow all
   const key = `rl:${ip}`;
@@ -49,24 +88,34 @@ export default {
 
     const userPrompt = TOOL_PROMPTS[tool](inputs);
 
-    // Call Groq API with streaming
-    const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${env.GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: userPrompt },
-        ],
-        stream: true,
-        max_tokens: 1024,
-        temperature: 0.7,
-      }),
-    });
+    async function callGroq(model) {
+      return fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.GROQ_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model,
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            { role: 'user', content: userPrompt },
+          ],
+          stream: true,
+          max_tokens: 1024,
+          temperature: 0.7,
+        }),
+      });
+    }
+
+    let model = await getGroqModel(env.GROQ_API_KEY);
+    let groqResponse = await callGroq(model);
+
+    // If the cached model was retired since we picked it, refresh and retry once.
+    if (groqResponse.status === 404) {
+      model = await getGroqModel(env.GROQ_API_KEY, true);
+      groqResponse = await callGroq(model);
+    }
 
     if (!groqResponse.ok) {
       const errText = await groqResponse.text();

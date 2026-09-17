@@ -75,7 +75,31 @@ relatedTools: []
 `;
 }
 
-async function generateArticle(keyword) {
+// Groq periodically retires model IDs, so pick a live one instead of hardcoding.
+async function pickGroqModel() {
+  const res = await fetch('https://api.groq.com/openai/v1/models', {
+    headers: { 'Authorization': `Bearer ${GROQ_API_KEY}` },
+  });
+  if (!res.ok) throw new Error(`Groq models list error: ${res.status}`);
+  const { data } = await res.json();
+  const exclude = /whisper|tts|guard|moderation|embed|vision|compound/i;
+  const scored = data
+    .filter(m => !exclude.test(m.id))
+    .map(m => {
+      let score = 0;
+      if (/70b/i.test(m.id)) score += 30;
+      else if (/32b|maverick/i.test(m.id)) score += 25;
+      else if (/17b|20b/i.test(m.id)) score += 20;
+      else if (/9b|8b/i.test(m.id)) score += 10;
+      if (/versatile|instruct/i.test(m.id)) score += 5;
+      return { id: m.id, score };
+    })
+    .sort((a, b) => b.score - a.score);
+  if (scored.length === 0) throw new Error('No usable Groq chat models found');
+  return scored[0].id;
+}
+
+async function generateArticle(keyword, model) {
   const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -83,7 +107,7 @@ async function generateArticle(keyword) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
+      model,
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: buildPrompt(keyword) },
@@ -111,6 +135,8 @@ async function main() {
     return;
   }
 
+  const model = await pickGroqModel();
+  console.log(`Using model: ${model}`);
   console.log(`Generating ${pending.length} articles...`);
   let generated = 0;
   let failed = 0;
@@ -127,7 +153,7 @@ async function main() {
 
     try {
       console.log(`  ⚙  Generating: ${item.keyword}`);
-      const content = await generateArticle(item.keyword);
+      const content = await generateArticle(item.keyword, model);
 
       if (!content || content.length < 200) {
         throw new Error('Generated content too short');
