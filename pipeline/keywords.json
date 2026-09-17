@@ -1,82 +1,402 @@
 [
-  {"keyword": "cover letter for software engineer", "slug": "cover-letter-for-software-engineer-2", "status": "done"},
-  {"keyword": "cover letter for marketing manager", "slug": "cover-letter-for-marketing-manager", "status": "pending"},
-  {"keyword": "cover letter for data analyst", "slug": "cover-letter-for-data-analyst", "status": "pending"},
-  {"keyword": "cover letter for project manager", "slug": "cover-letter-for-project-manager", "status": "pending"},
-  {"keyword": "cover letter for graphic designer", "slug": "cover-letter-for-graphic-designer", "status": "pending"},
-  {"keyword": "cover letter for nurse", "slug": "cover-letter-for-nurse", "status": "pending"},
-  {"keyword": "cover letter for teacher", "slug": "cover-letter-for-teacher", "status": "pending"},
-  {"keyword": "cover letter for accountant", "slug": "cover-letter-for-accountant", "status": "pending"},
-  {"keyword": "cover letter for customer service", "slug": "cover-letter-for-customer-service", "status": "pending"},
-  {"keyword": "cover letter for sales representative", "slug": "cover-letter-for-sales-representative", "status": "pending"},
-  {"keyword": "cover letter for recent graduate", "slug": "cover-letter-for-recent-graduate", "status": "pending"},
-  {"keyword": "cover letter for career change", "slug": "cover-letter-for-career-change", "status": "pending"},
-  {"keyword": "cover letter for internal position", "slug": "cover-letter-for-internal-position", "status": "pending"},
-  {"keyword": "cover letter with no experience in field", "slug": "cover-letter-no-experience-field", "status": "pending"},
-  {"keyword": "cover letter for remote job", "slug": "cover-letter-for-remote-job", "status": "pending"},
-  {"keyword": "cover letter for UX designer", "slug": "cover-letter-for-ux-designer", "status": "pending"},
-  {"keyword": "cover letter for business analyst", "slug": "cover-letter-for-business-analyst", "status": "pending"},
-  {"keyword": "cover letter for human resources", "slug": "cover-letter-for-human-resources", "status": "pending"},
-  {"keyword": "cover letter for finance analyst", "slug": "cover-letter-for-finance-analyst", "status": "pending"},
-  {"keyword": "cover letter for executive assistant", "slug": "cover-letter-for-executive-assistant", "status": "pending"},
-  {"keyword": "interview questions for software engineer", "slug": "interview-questions-for-software-engineer", "status": "pending"},
-  {"keyword": "interview questions for data scientist", "slug": "interview-questions-for-data-scientist", "status": "pending"},
-  {"keyword": "interview questions for marketing manager", "slug": "interview-questions-for-marketing-manager", "status": "pending"},
-  {"keyword": "interview questions for customer success manager", "slug": "interview-questions-for-customer-success-manager", "status": "pending"},
-  {"keyword": "interview questions for project manager", "slug": "interview-questions-for-project-manager", "status": "pending"},
-  {"keyword": "interview questions for sales manager", "slug": "interview-questions-for-sales-manager", "status": "pending"},
-  {"keyword": "interview questions for UX designer", "slug": "interview-questions-for-ux-designer", "status": "pending"},
-  {"keyword": "interview questions for operations manager", "slug": "interview-questions-for-operations-manager", "status": "pending"},
-  {"keyword": "interview questions for HR manager", "slug": "interview-questions-for-hr-manager", "status": "pending"},
-  {"keyword": "interview questions for finance manager", "slug": "interview-questions-for-finance-manager", "status": "pending"},
-  {"keyword": "behavioral interview questions STAR method", "slug": "behavioral-interview-questions-star-method", "status": "pending"},
-  {"keyword": "common interview questions and answers", "slug": "common-interview-questions-answers", "status": "pending"},
-  {"keyword": "how to answer why do you want this job", "slug": "how-to-answer-why-do-you-want-this-job", "status": "pending"},
-  {"keyword": "how to answer what are your weaknesses", "slug": "how-to-answer-what-are-your-weaknesses", "status": "pending"},
-  {"keyword": "how to answer where do you see yourself in 5 years", "slug": "how-to-answer-where-do-you-see-yourself-5-years", "status": "pending"},
-  {"keyword": "how to answer why are you leaving your job", "slug": "how-to-answer-why-leaving-job", "status": "pending"},
-  {"keyword": "how to answer what is your greatest achievement", "slug": "how-to-answer-greatest-achievement", "status": "pending"},
-  {"keyword": "how to answer what are your salary expectations", "slug": "how-to-answer-salary-expectations", "status": "pending"},
-  {"keyword": "phone interview tips", "slug": "phone-interview-tips", "status": "pending"},
-  {"keyword": "video interview tips zoom microsoft teams", "slug": "video-interview-tips", "status": "pending"},
-  {"keyword": "resume tips for data analyst", "slug": "resume-tips-for-data-analyst", "status": "pending"},
-  {"keyword": "resume tips for marketing professionals", "slug": "resume-tips-for-marketing-professionals", "status": "pending"},
-  {"keyword": "resume tips for project managers", "slug": "resume-tips-for-project-managers", "status": "pending"},
-  {"keyword": "resume tips for career changers", "slug": "resume-tips-for-career-changers", "status": "pending"},
-  {"keyword": "resume tips for recent graduates", "slug": "resume-tips-for-recent-graduates", "status": "pending"},
-  {"keyword": "how to write resume with no work experience", "slug": "how-to-write-resume-no-work-experience", "status": "pending"},
-  {"keyword": "how to list skills on resume", "slug": "how-to-list-skills-on-resume", "status": "pending"},
-  {"keyword": "how to write resume objective statement", "slug": "how-to-write-resume-objective-statement", "status": "pending"},
-  {"keyword": "how to format resume 2026", "slug": "how-to-format-resume-2026", "status": "pending"},
-  {"keyword": "ATS resume tips applicant tracking system", "slug": "ats-resume-tips", "status": "pending"},
-  {"keyword": "how to explain employment gap on resume", "slug": "how-to-explain-employment-gap-resume", "status": "pending"},
-  {"keyword": "how long should a resume be", "slug": "how-long-should-resume-be", "status": "pending"},
-  {"keyword": "resume action words and verbs", "slug": "resume-action-words-verbs", "status": "pending"},
-  {"keyword": "how to quantify achievements on resume", "slug": "how-to-quantify-achievements-resume", "status": "pending"},
-  {"keyword": "software engineer salary negotiation", "slug": "software-engineer-salary-negotiation", "status": "pending"},
-  {"keyword": "how to negotiate salary at new job", "slug": "how-to-negotiate-salary-new-job", "status": "pending"},
-  {"keyword": "how to ask for a raise", "slug": "how-to-ask-for-a-raise", "status": "pending"},
-  {"keyword": "what is a good salary for entry level", "slug": "good-salary-entry-level", "status": "pending"},
-  {"keyword": "total compensation vs base salary", "slug": "total-compensation-vs-base-salary", "status": "pending"},
-  {"keyword": "how to evaluate a job offer", "slug": "how-to-evaluate-job-offer", "status": "pending"},
-  {"keyword": "when to accept or decline a job offer", "slug": "when-to-accept-decline-job-offer", "status": "pending"},
-  {"keyword": "how to compare two job offers", "slug": "how-to-compare-two-job-offers", "status": "pending"},
-  {"keyword": "counter offer letter example", "slug": "counter-offer-letter-example", "status": "pending"},
-  {"keyword": "equity and stock options in job offer", "slug": "equity-stock-options-job-offer", "status": "pending"},
-  {"keyword": "how to find a job quickly", "slug": "how-to-find-a-job-quickly", "status": "pending"},
-  {"keyword": "how to job search while employed", "slug": "how-to-job-search-while-employed", "status": "pending"},
-  {"keyword": "best job search sites 2026", "slug": "best-job-search-sites-2026", "status": "pending"},
-  {"keyword": "how to use LinkedIn for job search", "slug": "how-to-use-linkedin-job-search", "status": "pending"},
-  {"keyword": "how to get a job with no connections", "slug": "how-to-get-job-no-connections", "status": "pending"},
-  {"keyword": "job search tips for introverts", "slug": "job-search-tips-introverts", "status": "pending"},
-  {"keyword": "how to switch careers at 30", "slug": "how-to-switch-careers-at-30", "status": "pending"},
-  {"keyword": "how to switch careers at 40", "slug": "how-to-switch-careers-at-40", "status": "pending"},
-  {"keyword": "transferable skills for career change", "slug": "transferable-skills-career-change", "status": "pending"},
-  {"keyword": "how to get promoted at work", "slug": "how-to-get-promoted-at-work", "status": "pending"},
-  {"keyword": "signs it is time to quit your job", "slug": "signs-time-to-quit-job", "status": "pending"},
-  {"keyword": "how to resign professionally", "slug": "how-to-resign-professionally", "status": "pending"},
-  {"keyword": "two weeks notice letter template", "slug": "two-weeks-notice-letter-template", "status": "pending"},
-  {"keyword": "how to write a resignation letter", "slug": "how-to-write-resignation-letter", "status": "pending"},
-  {"keyword": "how to deal with job rejection", "slug": "how-to-deal-with-job-rejection", "status": "pending"},
-  {"keyword": "how to stay motivated during job search", "slug": "how-to-stay-motivated-job-search", "status": "pending"}
+  {
+    "keyword": "cover letter for software engineer",
+    "slug": "cover-letter-for-software-engineer-2",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for marketing manager",
+    "slug": "cover-letter-for-marketing-manager",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for data analyst",
+    "slug": "cover-letter-for-data-analyst",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for project manager",
+    "slug": "cover-letter-for-project-manager",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for graphic designer",
+    "slug": "cover-letter-for-graphic-designer",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for nurse",
+    "slug": "cover-letter-for-nurse",
+    "status": "done"
+  },
+  {
+    "keyword": "cover letter for teacher",
+    "slug": "cover-letter-for-teacher",
+    "status": "error"
+  },
+  {
+    "keyword": "cover letter for accountant",
+    "slug": "cover-letter-for-accountant",
+    "status": "error"
+  },
+  {
+    "keyword": "cover letter for customer service",
+    "slug": "cover-letter-for-customer-service",
+    "status": "error"
+  },
+  {
+    "keyword": "cover letter for sales representative",
+    "slug": "cover-letter-for-sales-representative",
+    "status": "error"
+  },
+  {
+    "keyword": "cover letter for recent graduate",
+    "slug": "cover-letter-for-recent-graduate",
+    "status": "error"
+  },
+  {
+    "keyword": "cover letter for career change",
+    "slug": "cover-letter-for-career-change",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for internal position",
+    "slug": "cover-letter-for-internal-position",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter with no experience in field",
+    "slug": "cover-letter-no-experience-field",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for remote job",
+    "slug": "cover-letter-for-remote-job",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for UX designer",
+    "slug": "cover-letter-for-ux-designer",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for business analyst",
+    "slug": "cover-letter-for-business-analyst",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for human resources",
+    "slug": "cover-letter-for-human-resources",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for finance analyst",
+    "slug": "cover-letter-for-finance-analyst",
+    "status": "pending"
+  },
+  {
+    "keyword": "cover letter for executive assistant",
+    "slug": "cover-letter-for-executive-assistant",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for software engineer",
+    "slug": "interview-questions-for-software-engineer",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for data scientist",
+    "slug": "interview-questions-for-data-scientist",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for marketing manager",
+    "slug": "interview-questions-for-marketing-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for customer success manager",
+    "slug": "interview-questions-for-customer-success-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for project manager",
+    "slug": "interview-questions-for-project-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for sales manager",
+    "slug": "interview-questions-for-sales-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for UX designer",
+    "slug": "interview-questions-for-ux-designer",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for operations manager",
+    "slug": "interview-questions-for-operations-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for HR manager",
+    "slug": "interview-questions-for-hr-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "interview questions for finance manager",
+    "slug": "interview-questions-for-finance-manager",
+    "status": "pending"
+  },
+  {
+    "keyword": "behavioral interview questions STAR method",
+    "slug": "behavioral-interview-questions-star-method",
+    "status": "pending"
+  },
+  {
+    "keyword": "common interview questions and answers",
+    "slug": "common-interview-questions-answers",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer why do you want this job",
+    "slug": "how-to-answer-why-do-you-want-this-job",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer what are your weaknesses",
+    "slug": "how-to-answer-what-are-your-weaknesses",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer where do you see yourself in 5 years",
+    "slug": "how-to-answer-where-do-you-see-yourself-5-years",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer why are you leaving your job",
+    "slug": "how-to-answer-why-leaving-job",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer what is your greatest achievement",
+    "slug": "how-to-answer-greatest-achievement",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to answer what are your salary expectations",
+    "slug": "how-to-answer-salary-expectations",
+    "status": "pending"
+  },
+  {
+    "keyword": "phone interview tips",
+    "slug": "phone-interview-tips",
+    "status": "pending"
+  },
+  {
+    "keyword": "video interview tips zoom microsoft teams",
+    "slug": "video-interview-tips",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume tips for data analyst",
+    "slug": "resume-tips-for-data-analyst",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume tips for marketing professionals",
+    "slug": "resume-tips-for-marketing-professionals",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume tips for project managers",
+    "slug": "resume-tips-for-project-managers",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume tips for career changers",
+    "slug": "resume-tips-for-career-changers",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume tips for recent graduates",
+    "slug": "resume-tips-for-recent-graduates",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to write resume with no work experience",
+    "slug": "how-to-write-resume-no-work-experience",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to list skills on resume",
+    "slug": "how-to-list-skills-on-resume",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to write resume objective statement",
+    "slug": "how-to-write-resume-objective-statement",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to format resume 2026",
+    "slug": "how-to-format-resume-2026",
+    "status": "pending"
+  },
+  {
+    "keyword": "ATS resume tips applicant tracking system",
+    "slug": "ats-resume-tips",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to explain employment gap on resume",
+    "slug": "how-to-explain-employment-gap-resume",
+    "status": "pending"
+  },
+  {
+    "keyword": "how long should a resume be",
+    "slug": "how-long-should-resume-be",
+    "status": "pending"
+  },
+  {
+    "keyword": "resume action words and verbs",
+    "slug": "resume-action-words-verbs",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to quantify achievements on resume",
+    "slug": "how-to-quantify-achievements-resume",
+    "status": "pending"
+  },
+  {
+    "keyword": "software engineer salary negotiation",
+    "slug": "software-engineer-salary-negotiation",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to negotiate salary at new job",
+    "slug": "how-to-negotiate-salary-new-job",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to ask for a raise",
+    "slug": "how-to-ask-for-a-raise",
+    "status": "pending"
+  },
+  {
+    "keyword": "what is a good salary for entry level",
+    "slug": "good-salary-entry-level",
+    "status": "pending"
+  },
+  {
+    "keyword": "total compensation vs base salary",
+    "slug": "total-compensation-vs-base-salary",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to evaluate a job offer",
+    "slug": "how-to-evaluate-job-offer",
+    "status": "pending"
+  },
+  {
+    "keyword": "when to accept or decline a job offer",
+    "slug": "when-to-accept-decline-job-offer",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to compare two job offers",
+    "slug": "how-to-compare-two-job-offers",
+    "status": "pending"
+  },
+  {
+    "keyword": "counter offer letter example",
+    "slug": "counter-offer-letter-example",
+    "status": "pending"
+  },
+  {
+    "keyword": "equity and stock options in job offer",
+    "slug": "equity-stock-options-job-offer",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to find a job quickly",
+    "slug": "how-to-find-a-job-quickly",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to job search while employed",
+    "slug": "how-to-job-search-while-employed",
+    "status": "pending"
+  },
+  {
+    "keyword": "best job search sites 2026",
+    "slug": "best-job-search-sites-2026",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to use LinkedIn for job search",
+    "slug": "how-to-use-linkedin-job-search",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to get a job with no connections",
+    "slug": "how-to-get-job-no-connections",
+    "status": "pending"
+  },
+  {
+    "keyword": "job search tips for introverts",
+    "slug": "job-search-tips-introverts",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to switch careers at 30",
+    "slug": "how-to-switch-careers-at-30",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to switch careers at 40",
+    "slug": "how-to-switch-careers-at-40",
+    "status": "pending"
+  },
+  {
+    "keyword": "transferable skills for career change",
+    "slug": "transferable-skills-career-change",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to get promoted at work",
+    "slug": "how-to-get-promoted-at-work",
+    "status": "pending"
+  },
+  {
+    "keyword": "signs it is time to quit your job",
+    "slug": "signs-time-to-quit-job",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to resign professionally",
+    "slug": "how-to-resign-professionally",
+    "status": "pending"
+  },
+  {
+    "keyword": "two weeks notice letter template",
+    "slug": "two-weeks-notice-letter-template",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to write a resignation letter",
+    "slug": "how-to-write-resignation-letter",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to deal with job rejection",
+    "slug": "how-to-deal-with-job-rejection",
+    "status": "pending"
+  },
+  {
+    "keyword": "how to stay motivated during job search",
+    "slug": "how-to-stay-motivated-job-search",
+    "status": "pending"
+  }
 ]
