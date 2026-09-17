@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://perxxd.github.io/career-site/sitemap-index.xml
+Sitemap: https://aicareertools.github.io/sitemap-index.xml

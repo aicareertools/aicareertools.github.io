@@ -9,8 +9,7 @@ import sitemap from '@astrojs/sitemap';
 //   - If repo is career-site             → https://username.github.io/career-site
 // Update `base` only if deploying to a sub-path (e.g. base: '/career-site')
 export default defineConfig({
-  site: 'https://perxxd.github.io',
-  base: '/career-site',
+  site: 'https://aicareertools.github.io',
   vite: {
     plugins: [tailwindcss()]
   },
